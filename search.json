@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "tcp_hello_observer.html",
+    "href": "tcp_hello_observer.html",
+    "title": "TcpHelloObserver",
+    "section": "",
+    "text": "source\n\nTcpHelloObserver\n\n TcpHelloObserver ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\n\nAttributes\n\n\n\nattribute\ndescription\n\n\n\n\nx\nlist of floating point x values\n\n\ny\nlist of floating point y values\n\n\n\n\n\nMethods\n\nsource\n\nTcpHelloObserver.parse_num\n\n TcpHelloObserver.parse_num (num_str:str)\n\nParses a number from a string in the format used by hello_world. The base of the exponentation is always assumed to be 2 and not parsed. The exponent must be an integer.\n\ntest_eq(TcpHelloObserver.parse_num(\"1.0*2^8\"),256)\n\n\n\"Note that the '3' is assumed to be a 2\"\nTcpHelloObserver.parse_num(\"1.0*3^8\")\n\n256.0\n\n\n\nsource\n\n\nTcpHelloObserver.parse_data\n\n TcpHelloObserver.parse_data (message:str)\n\nReturns float (x,y) pair from message which follows formatting used by hello_world\n\ntest_eq(TcpHelloObserver.parse_data(\"x_value: 1.5*2^10, y_value: 1*2^-1\"), (1.5*2**10, 1*2**(-1)))\ntest_eq(TcpHelloObserver.parse_data(\"x_value: 1.2566366*2^0, y_value: 1.9316164*2^-1\"), (1.2566366*2**0, 1.9316164*2**(-1)))\n\n\nsource\n\n\nTcpHelloObserver.start_server\n\n TcpHelloObserver.start_server (hostname:str, portnum:int)\n\nSets up a server\n\nsource\n\n\nTcpHelloObserver.serve_connection\n\n TcpHelloObserver.serve_connection ()\n\nTries to start a connection with client if one doesn’t exist\n\nsource\n\n\nTcpHelloObserver.is_connected\n\n TcpHelloObserver.is_connected ()\n\nReturns true if a client is connected"
+  },
+  {
+    "objectID": "00_core.html",
+    "href": "00_core.html",
+    "title": "tflm_hello_world",
+    "section": "",
+    "text": "from fastcore.test import *\n\n\nsource\n\nfoo\n\n foo ()\n\n\nsource\n\n\nsay_hello\n\n say_hello (to)\n\nSay hello to somebody\n\ntest_eq(say_hello('Isaac'), 'Hello Isaac!')\n\n\nimport unittest\n\nclass CoreTest(unittest.TestCase):\n    def test_say_hello(self):\n        test_eq(say_hello('Isaac'), 'Hello Isaac!')\n\n\ndef run_case(testcase:unittest.TestCase):\n    \"Runs a unittest.TestCase\"\n    suite = unittest.defaultTestLoader.loadTestsFromTestCase(testcase)\n    unittest.TextTestRunner().run(suite)\n\n\nrun_case(CoreTest)\n\n.\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK"
+  },
+  {
+    "objectID": "export.html",
+    "href": "export.html",
+    "title": "core",
+    "section": "",
+    "text": "_test_file = \"00_core.ipynb\"\n\n\nsource\n\nExportTestProc\n\n ExportTestProc ()\n\nA test proc that watches for #|default_exp and #|test\n\nsource\n\n\nget_directive\n\n get_directive (cell, key, default=None)\n\nExtract a top level directive from cell\n\ndef _mark_test(s):\n    ft = exec_new(\"import fastcore.test as ft\")[\"ft\"].__all__\n    kinds = [(o,f'ft.{o}') for o in ft if o.startswith(\"test_\")]\n    for k,v in kinds: s = s.replace(k,v)\n    return s\n\n\nsource\n\n\nconvert_pytest\n\n convert_pytest (cell, unittest=False)\n\nWraps cell contents into a pytest function\n\nsource\n\n\nconstruct_imports\n\n construct_imports (nb, unittest=False)\n\nGenerates the test imports for the notebook\n\nsource\n\n\ncreate_test_modules\n\n create_test_modules (path, dest, debug=False, mod_maker=<class\n                      'nbdev.maker.ModuleMaker'>, unittest=False)\n\nCreates test files from path, optionally with unittest support\n\ncreate_test_modules(_test_file, \"tests\")\n\n\n!pytest tests/\n\n============================= test session starts ==============================\nplatform linux -- Python 3.10.4, pytest-7.2.1, pluggy-1.0.0\nrootdir: /home/borna/tflm_hello_world\nplugins: cov-4.0.0, nbval-0.10.0\ncollecting ... collected 1 item                                                               \n\ntests/test_core.py .                                                     [100%]\n\n============================== 1 passed in 0.00s ==============================="
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "tflm_hello_world",
+    "section": "",
+    "text": "This file will become your README and also the index of your documentation."
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "tflm_hello_world",
+    "section": "Install",
+    "text": "Install\npip install tflm_hello_world"
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "tflm_hello_world",
+    "section": "How to use",
+    "text": "How to use\nFill me in please! Don’t forget code examples:\n\n1+1\n\n2"
+  }
+]
